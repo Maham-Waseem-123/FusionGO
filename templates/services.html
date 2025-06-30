@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Services - FusionGo{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(10, 42, 71, 0.9), url('/static/andy-li-CpsTAUPoScw-unsplash.jpg'));">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Services</h1>
+                <p>Comprehensive solutions for your logistics needs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Logistics Solutions</h2>
+                <p>End-to-end services to optimize your delivery operations</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Route Optimization</h3>
+                    <p>AI-powered algorithms to find the most efficient delivery routes, reducing fuel costs and delivery times.</p>
+                    <div style="background: linear-gradient(135deg, rgba(10, 42, 71, 0.05) 0%, rgba(0, 155, 110, 0.05) 100%); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <img src="/static/bogdan-karlenko-36b7JBzhfF4-unsplash.jpg" alt="Route optimization" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Live GPS monitoring of your shipments with ETAs and delivery status updates.</p>
+                    <div style="background: linear-gradient(135deg, rgba(10, 42, 71, 0.05) 0%, rgba(0, 155, 110, 0.05) 100%); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <img src="/static/GPS.jpg" alt="Real-time tracking" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>e-Bilty Generation</h3>
+                    <p>Automated FBR-compliant e-Bilty generation with digital signatures and QR codes.</p>
+                    <div style="background: linear-gradient(135deg, rgba(10, 42, 71, 0.05) 0%, rgba(0, 155, 110, 0.05) 100%); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <img src="/static/credit.jpg" alt="e-Bilty generation" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Driver Management</h3>
+                    <p>Comprehensive tools for managing your driver fleet, schedules, and performance metrics.</p>
+                    <div style="background: linear-gradient(135deg, rgba(10, 42, 71, 0.05) 0%, rgba(0, 155, 110, 0.05) 100%); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <img src="/static/driver.jpg" alt="Driver management" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Detailed insights into your delivery operations with customizable reports and dashboards.</p>
+                    <div style="background: linear-gradient(135deg, rgba(10, 42, 71, 0.05) 0%, rgba(0, 155, 110, 0.05) 100%); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <img src="/static/dashboard.jpg" alt="Analytics dashboard" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Applications</h3>
+                    <p>Dedicated apps for drivers, customers, and managers to streamline the delivery process.</p>
+                    <div style="background: linear-gradient(135deg, rgba(10, 42, 71, 0.05) 0%, rgba(0, 155, 110, 0.05) 100%); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <img src="/static/mobile.jpg" alt="Mobile application" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

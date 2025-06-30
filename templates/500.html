@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Server Error - FusionGo{% endblock %}
+
+{% block content %}
+    <section style="min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 0;">
+        <div class="container">
+            <div>
+                <h1 style="font-size: 5rem; font-weight: 800; color: #009b6e; margin-bottom: 20px;">500</h1>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #0a2a47;">Internal Server Error</h2>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; color: #333;">We're experiencing some technical difficulties. Our team is working to fix the issue.</p>
+                <a href="/" class="btn btn-primary">Return to Homepage</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

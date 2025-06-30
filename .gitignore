@@ -1,0 +1,56 @@
+# Virtual environment files
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Environment variables
+.env
+.secrets
+
+# Build and distribution files
+build/
+dist/
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Log files
+*.log
+logs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Test files
+tests/_output/*
+tests/_support/_generated/*
+tests/acceptance.suite.yml
+tests/functional.suite.yml
+tests/unit.suite.yml
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+
+# Installer files
+*.msi
+*.exe
