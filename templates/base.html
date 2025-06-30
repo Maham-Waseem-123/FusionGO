@@ -154,20 +154,20 @@
         
         /* Mobile Menu Styles */
         .mobile-nav {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
             background-color: white;
-            z-index: 1000;
+            z-index: 999;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             transform: translateY(-100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
+            display: flex;
         }
         
         .mobile-nav.active {
@@ -180,23 +180,29 @@
         }
         
         .mobile-nav-links li {
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .mobile-nav-links a {
             text-decoration: none;
             color: var(--fusion);
-            font-size: 1.5rem;
-            font-weight: 500;
+            font-size: 1.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--go);
         }
         
         .mobile-menu-close {
             position: absolute;
-            top: 25px;
-            right: 25px;
-            font-size: 1.8rem;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
             cursor: pointer;
             color: var(--fusion);
+            z-index: 1001;
         }
         
         /* Hero Section */
@@ -497,6 +503,10 @@
             .cta h2 {
                 font-size: 2.2rem;
             }
+
+            .mobile-nav-links a {
+                font-size: 1.5rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -518,6 +528,19 @@
             
             .footer-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .mobile-nav-links li {
+                margin: 20px 0;
+            }
+
+            .mobile-nav-links a {
+                font-size: 1.4rem;
+            }
+
+            .mobile-menu-close {
+                top: 25px;
+                right: 25px;
             }
         }
     </style>
@@ -616,16 +639,19 @@
         // Mobile menu toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.getElementById('mobileNav').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
         });
         
         document.getElementById('mobileMenuClose').addEventListener('click', function() {
             document.getElementById('mobileNav').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
         });
         
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+        document.querySelectorAll('.mobile-nav-links a, .mobile-btn').forEach(link => {
             link.addEventListener('click', function() {
                 document.getElementById('mobileNav').classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
             });
         });
     </script>
