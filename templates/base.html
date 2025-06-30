@@ -1,3 +1,5 @@
+[file name]: base.html
+[file content begin]
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +53,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+            position: relative;
         }
         
         .logo {
@@ -58,6 +61,7 @@
             align-items: center;
             font-weight: 700;
             font-size: 1.8rem;
+            z-index: 1001;
         }
         
         .logo-fusion {
@@ -143,6 +147,54 @@
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--fusion);
+            z-index: 1001;
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav.active {
+            transform: translateY(0);
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .mobile-nav-links li {
+            margin: 20px 0;
+        }
+        
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--fusion);
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 1.8rem;
             cursor: pointer;
             color: var(--fusion);
         }
@@ -401,7 +453,8 @@
                 font-size: 2.2rem;
             }
             
-            .nav-links {
+            .nav-links,
+            .btn-primary:not(.mobile-btn) {
                 display: none;
             }
             
@@ -454,6 +507,18 @@
             .hero h1 {
                 font-size: 2rem;
             }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     {% block styles %}{% endblock %}
@@ -479,6 +544,20 @@
             </nav>
         </div>
     </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <a href="/contact" class="btn btn-primary mobile-btn">Get Started</a>
+    </div>
 
     <!-- Main Content -->
     {% block content %}{% endblock %}
@@ -536,9 +615,21 @@
     <script>
         // Mobile menu toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+            document.getElementById('mobileNav').classList.add('active');
+        });
+        
+        document.getElementById('mobileMenuClose').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileNav').classList.remove('active');
+            });
         });
     </script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
+[file content end]
