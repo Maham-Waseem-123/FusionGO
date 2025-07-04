@@ -212,8 +212,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2300c9ff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background: url("/static/andy-li-CpsTAUPoScw-unsplash.jpg");
             opacity: 0.2;
+            background-size: cover;
+            background-position: center;
         }
         
         .hero-content {
@@ -295,47 +297,78 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px; /* Increased gap for better separation */
         }
         
+        /* New Glass Effect Styles */
         .feature-card {
-            background: linear-gradient(135deg, white 0%, #f8fbfe 100%);
-            border-radius: 15px;
+            background: linear-gradient(
+                135deg, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(255, 255, 255, 0.05) 100%
+            );
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px rgba(10, 42, 71, 0.15),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(10, 42, 71, 0.1);
+            z-index: 1;
             transition: var(--transition);
             padding: 40px 30px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
         
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(10, 42, 71, 0.03) 0%, rgba(0, 155, 110, 0.03) 100%);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-        
+        /* Glass card hover effect */
         .feature-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 15px 40px rgba(10, 42, 71, 0.15);
+            box-shadow: 
+                0 15px 40px rgba(10, 42, 71, 0.25),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(
+                135deg, 
+                rgba(255, 255, 255, 0.25) 0%, 
+                rgba(255, 255, 255, 0.1) 100%
+            );
         }
         
+        /* Glowing accent border on hover */
+        .feature-card:hover::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                135deg, 
+                rgba(0, 201, 255, 0.5) 0%, 
+                rgba(0, 155, 110, 0.5) 100%
+            );
+            z-index: -1;
+            border-radius: 22px;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                opacity: 0.3;
+            }
+            to {
+                opacity: 0.7;
+            }
+        }
+        
+        /* Feature icon styling */
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, rgba(0, 155, 110, 0.1) 0%, rgba(0, 201, 255, 0.1) 100%);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(10, 42, 71, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -347,20 +380,58 @@
         }
         
         .feature-card:hover .feature-icon {
-            transform: scale(1.1);
             background: linear-gradient(135deg, var(--go) 0%, var(--accent) 100%);
             color: white;
+            transform: scale(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
+        /* Adjust text color for better contrast */
         .feature-card h3 {
+            color: var(--fusion);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--fusion);
         }
         
         .feature-card p {
-            color: #666;
+            color: #444;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
             font-size: 1rem;
+        }
+        
+        /* Add subtle background pattern to features section */
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(10, 42, 71, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 155, 110, 0.03) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* For the careers section with different background */
+        #careers .feature-card {
+            background: linear-gradient(
+                135deg, 
+                rgba(249, 251, 253, 0.15) 0%, 
+                rgba(230, 240, 247, 0.05) 100%
+            );
+            border: 1px solid rgba(230, 240, 247, 0.3);
+        }
+        
+        #careers .feature-card:hover {
+            background: linear-gradient(
+                135deg, 
+                rgba(249, 251, 253, 0.25) 0%, 
+                rgba(230, 240, 247, 0.1) 100%
+            );
+            border: 1px solid rgba(230, 240, 247, 0.4);
         }
         
         /* Stats Section */
@@ -380,8 +451,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23009b6e' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background: url("/static/andy-li-CpsTAUPoScw-unsplash.jpg");
             opacity: 0.1;
+            background-size: cover;
+            background-position: center;
         }
         
         .stats-grid {
@@ -430,8 +503,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23009b6e' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background: url("/static/andy-li-CpsTAUPoScw-unsplash.jpg");
             opacity: 0.1;
+            background-size: cover;
+            background-position: center;
         }
         
         .cta-content {
