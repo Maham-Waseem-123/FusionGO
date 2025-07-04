@@ -212,7 +212,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("/static/andy-li-CpsTAUPoScw-unsplash.jpg");
+            background: url("https://images.unsplash.com/photo-1462899006636-339e08d1844e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
             opacity: 0.2;
             background-size: cover;
             background-position: center;
@@ -396,7 +396,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("/static/andy-li-CpsTAUPoScw-unsplash.jpg");
+            background: url("https://images.unsplash.com/photo-1462899006636-339e08d1844e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
             opacity: 0.1;
             background-size: cover;
             background-position: center;
@@ -448,7 +448,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("/static/andy-li-CpsTAUPoScw-unsplash.jpg");
+            background: url("https://images.unsplash.com/photo-1462899006636-339e08d1844e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
             opacity: 0.1;
             background-size: cover;
             background-position: center;
@@ -489,7 +489,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("/static/andy-li-CpsTAUPoScw-unsplash.jpg");
+            background: url("https://images.unsplash.com/photo-1462899006636-339e08d1844e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
             opacity: 0.1;
         }
         
@@ -583,6 +583,24 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        
+        /* Page transition overlay */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--fusion) 0%, var(--go) 100%);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-transition.active {
+            opacity: 1;
         }
         
         /* Mobile menu */
@@ -723,9 +741,40 @@
                 font-size: 2rem;
             }
         }
+        
+        /* Page content transitions */
+        .page-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+        
+        /* Navigation animations */
+        .nav-links li {
+            transform: translateY(5px);
+            opacity: 0;
+            animation: navItemFade 0.5s ease forwards;
+        }
+        
+        .nav-links li:nth-child(1) { animation-delay: 0.2s; }
+        .nav-links li:nth-child(2) { animation-delay: 0.25s; }
+        .nav-links li:nth-child(3) { animation-delay: 0.3s; }
+        .nav-links li:nth-child(4) { animation-delay: 0.35s; }
+        .nav-links li:nth-child(5) { animation-delay: 0.4s; }
+        .nav-links li:nth-child(6) { animation-delay: 0.45s; }
+        
+        @keyframes navItemFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Page transition overlay -->
+    <div class="page-transition"></div>
+    
     <!-- Mobile menu overlay -->
     <div class="overlay"></div>
     
@@ -769,7 +818,7 @@
     </header>
     
     <!-- Main content -->
-    <main>
+    <main class="page-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
@@ -1010,6 +1059,35 @@
         }, { threshold: 0.5 });
         
         observer.observe(statsSection);
+        
+        // Page transition effect
+        document.querySelectorAll('a').forEach(link => {
+            // Only handle internal links
+            if (link.href.includes(window.location.hostname) && 
+                !link.href.includes('#') && 
+                link.href !== window.location.href) {
+                
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const transition = document.querySelector('.page-transition');
+                    const href = this.href;
+                    
+                    // Show transition overlay
+                    transition.classList.add('active');
+                    
+                    // Navigate after delay
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            }
+        });
+        
+        // Add fade-in animation to page content
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.page-content').style.opacity = '1';
+            document.querySelector('.page-content').style.transform = 'translateY(0)';
+        });
     </script>
 </body>
 </html>
