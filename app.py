@@ -18,6 +18,15 @@ def services():
 def contact():
     return render_template('contact.html')
 
+# Add these new routes
+@app.route('/careers')
+def careers():
+    return render_template('careers.html')
+
+@app.route('/investing')
+def investing():
+    return render_template('investing.html')
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
