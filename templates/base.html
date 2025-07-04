@@ -201,7 +201,6 @@
             padding: 160px 0 100px;
             position: relative;
             overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             margin-bottom: -50px;
         }
         
@@ -385,7 +384,6 @@
             color: white;
             padding: 100px 0;
             position: relative;
-            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
             margin: 100px 0;
         }
         
@@ -473,13 +471,12 @@
             opacity: 0.9;
         }
         
-        /* Footer */
+        /* Footer - Fixed for Mobile */
         footer {
             background: linear-gradient(135deg, #0a2a47 0%, #05203a 100%);
             color: white;
-            padding: 80px 0 30px;
+            padding: 100px 0 40px;
             position: relative;
-            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
         }
         
         footer::before {
@@ -694,6 +691,16 @@
             .mobile-menu {
                 display: block;
             }
+            
+            /* Fix footer for tablet */
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            /* Increase top padding for footer sections */
+            .footer-col {
+                padding-top: 20px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -730,6 +737,29 @@
             .cta h2 {
                 font-size: 2.2rem;
             }
+            
+            /* Mobile-specific footer adjustments */
+            footer {
+                padding: 80px 0 30px;
+            }
+            
+            .footer-grid {
+                gap: 30px;
+            }
+            
+            .footer-col {
+                min-width: 100%;
+                padding-top: 30px;
+            }
+            
+            .copyright {
+                padding-top: 30px;
+            }
+            
+            /* Add extra space above footer sections */
+            .footer-col:first-child {
+                padding-top: 0;
+            }
         }
         
         @media (max-width: 576px) {
@@ -739,6 +769,29 @@
             
             .hero h1 {
                 font-size: 2rem;
+            }
+            
+            /* Adjust footer for small mobile */
+            .footer-col h4 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+            
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+            
+            .footer-contact li {
+                margin-bottom: 15px;
+            }
+            
+            /* More padding for mobile footer */
+            footer {
+                padding: 70px 0 25px;
+            }
+            
+            .footer-col {
+                padding-top: 25px;
             }
         }
         
@@ -819,7 +872,87 @@
     
     <!-- Main content -->
     <main class="page-content">
-        {% block content %}{% endblock %}
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>AI-Powered Last Mile Delivery Software in Pakistan</h1>
+                    <h2>Real-Time Tracking, Route Optimization, e-Bilty & Multilingual Support</h2>
+                    <p>FusionGo helps businesses manage last mile deliveries using AI-powered route planning, live GPS tracking, FBR e-bilty generation, and secure payment gateways — all in a mobile-friendly, multilingual platform.</p>
+                    <div class="hero-btns">
+                        <a href="/contact" class="btn btn-primary">Request Demo</a>
+                        <a href="/services" class="btn btn-secondary">See Features</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Transform Your Logistics</h2>
+                    <p>Powerful features designed for Pakistan's unique logistics challenges</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>AI-Powered Routing</h3>
+                        <p>Maximize efficiency with intelligent route optimization that reduces fuel costs and delivery times.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Real-Time Tracking</h3>
+                        <p>Monitor deliveries with live GPS tracking and receive instant updates on shipment status.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Multilingual Support</h3>
+                        <p>Serve customers across Pakistan with our platform available in Urdu, English, and regional languages.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">10,000+</div>
+                        <div class="stat-label">Monthly Shipments</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">On-Time Delivery Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">500+</div>
+                        <div class="stat-label">Active Drivers</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Logistics?</h2>
+                    <p>Join hundreds of businesses that have streamlined their operations with FusionGo</p>
+                    <a href="/contact" class="btn btn-primary">Get Started Today</a>
+                </div>
+            </div>
+        </section>
     </main>
     
     <!-- Footer -->
@@ -930,16 +1063,14 @@
 
         // Stats counter animation
         function animateStats() {
-            const stat1 = document.getElementById('stat1');
-            const stat2 = document.getElementById('stat2');
-            const stat3 = document.getElementById('stat3');
-            const stat4 = document.getElementById('stat4');
+            const stat1 = document.querySelector('.stat-item:nth-child(1) .stat-value');
+            const stat2 = document.querySelector('.stat-item:nth-child(2) .stat-value');
+            const stat3 = document.querySelector('.stat-item:nth-child(3) .stat-value');
             
             const stats = [
-                { element: stat1, value: 32 },
-                { element: stat2, value: 45 },
-                { element: stat3, value: 98 },
-                { element: stat4, value: 150 }
+                { element: stat1, value: 10000, suffix: '+' },
+                { element: stat2, value: 98, suffix: '%' },
+                { element: stat3, value: 500, suffix: '+' }
             ];
             
             stats.forEach(stat => {
@@ -951,9 +1082,9 @@
                     count += increment;
                     if (count >= stat.value) {
                         clearInterval(timer);
-                        stat.element.textContent = stat.value + (stat.element.id === 'stat4' ? '+' : '%');
+                        stat.element.textContent = stat.value.toLocaleString() + stat.suffix;
                     } else {
-                        stat.element.textContent = Math.floor(count) + (stat.element.id === 'stat4' ? '+' : '%');
+                        stat.element.textContent = Math.floor(count).toLocaleString() + stat.suffix;
                     }
                 }, 50);
             });
