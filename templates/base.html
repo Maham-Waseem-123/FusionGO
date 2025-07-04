@@ -353,13 +353,18 @@
             transition: var(--transition);
         }
         
-        .feature-card:hover .feature-icon {
-            background: linear-gradient(135deg, var(--go) 0%, var(--accent) 100%);
-            color: white;
-            transform: scale(1.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
+      .feature-card:hover {
+    transform: translateY(-15px);
+    background: linear-gradient(
+        135deg, 
+        rgba(0, 155, 110, 0.25) 0%, 
+        rgba(10, 42, 71, 0.25) 100%
+    );
+    box-shadow: 
+        0 12px 40px rgba(0, 155, 110, 0.3),
+        0 0 15px rgba(0, 201, 255, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
         /* Adjust text color for better contrast */
         .feature-card h3 {
             color: var(--fusion);
