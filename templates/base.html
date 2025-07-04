@@ -1,4 +1,5 @@
-<!-- base.html -->
+[file name]: base.html
+[file content begin]
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -584,23 +585,37 @@
                 transform: translateY(0);
             }
         }
-
-        /* Page transition */
+        
+        /* Updated page transition styles */
         .page-transition {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--fusion) 0%, var(--go) 100%);
             z-index: 9999;
-            opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease;
+            display: flex;
         }
-
-        .page-transition.active {
-            opacity: 1;
+        
+        .swipe-panel {
+            flex: 1;
+            height: 100%;
+            background: linear-gradient(135deg, var(--fusion) 0%, var(--go) 100%);
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        
+        .swipe-panel.left {
+            transform: translateX(-100%);
+        }
+        
+        .page-transition.active .swipe-panel {
+            transform: translateX(0);
+        }
+        
+        .page-transition.active .swipe-panel.left {
+            transform: translateX(0);
         }
 
         /* Mobile menu */
@@ -745,7 +760,10 @@
 </head>
 <body>
     <!-- Page transition overlay -->
-    <div class="page-transition"></div>
+    <div class="page-transition">
+        <div class="swipe-panel left"></div>
+        <div class="swipe-panel"></div>
+    </div>
     
     <!-- Mobile menu overlay -->
     <div class="overlay"></div>
@@ -856,16 +874,6 @@
             }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
         // Animation on scroll
         function animateOnScroll() {
             const elements = document.querySelectorAll('.feature-card, .stat-item');
@@ -910,9 +918,8 @@
             document.body.style.overflow = 'auto';
         });
 
-        // Page transition effect
+        // Enhanced page transition effect
         document.querySelectorAll('a').forEach(link => {
-            // Only handle internal links
             if (link.href.includes(window.location.hostname) && 
                 !link.href.includes('#') && 
                 link.href !== window.location.href) {
@@ -922,15 +929,23 @@
                     const transition = document.querySelector('.page-transition');
                     const href = this.href;
                     
-                    // Show transition overlay
+                    // Activate swipe panels
                     transition.classList.add('active');
                     
-                    // Navigate after delay
+                    // Navigate after animation completes
                     setTimeout(() => {
                         window.location.href = href;
                     }, 500);
                 });
             }
+        });
+
+        // Reset transition on page load
+        window.addEventListener('load', function() {
+            const transition = document.querySelector('.page-transition');
+            setTimeout(() => {
+                transition.classList.remove('active');
+            }, 100);
         });
     </script>
 </body>
