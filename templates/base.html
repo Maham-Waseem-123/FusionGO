@@ -77,19 +77,20 @@
             padding: 10px 0;
         }
         
-        .logo {
+        /* Updated Logo Styles */
+        .logo-container {
             display: flex;
             align-items: center;
-            font-weight: 700;
-            font-size: 1.8rem;
+            height: 100%;
         }
         
-        .logo-fusion {
-            color: var(--fusion);
+        .logo-img {
+            height: 50px; /* Default size */
+            transition: var(--transition);
         }
         
-        .logo-go {
-            color: var(--go);
+        header.scrolled .logo-img {
+            height: 35px; /* Smaller size when scrolled */
         }
         
         .nav-links {
@@ -701,6 +702,15 @@
             .footer-col {
                 padding-top: 20px;
             }
+            
+            /* Logo adjustments for tablet */
+            .logo-img {
+                height: 40px;
+            }
+            
+            header.scrolled .logo-img {
+                height: 30px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -760,15 +770,16 @@
             .footer-col:first-child {
                 padding-top: 0;
             }
+            
+            /* Logo adjustments for mobile */
+            .logo-img {
+                height: 35px;
+            }
         }
         
         @media (max-width: 576px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
+            .section-header h2 {
+                font-size: 1.8rem;
             }
             
             /* Adjust footer for small mobile */
@@ -851,9 +862,12 @@
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <div class="logo">
-                    <span class="logo-fusion">Fusion</span><span class="logo-go">Go</span>
-                </div>
+                <a href="/" class="logo-container">
+                    <!-- Updated Logo Section -->
+                    <img src="https://raw.githubusercontent.com/Maham-Waseem-123/FusionGO/main/static/logo.png" 
+                         alt="FusionGo Logo" 
+                         class="logo-img">
+                </a>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/services">Services</a></li>
