@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fusion: #002244;
-            --go: #fa7e23;
+            --fusion: #042444; /* Updated blue color */
+            --go: #fa7e23;    /* Updated orange color */
             --accent: #00c9ff;
             --light: #f4f6f8;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -37,7 +37,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(10, 42, 71, 0.03) 0%, rgba(0, 155, 110, 0.02) 100%);
+            background: radial-gradient(circle at 10% 20%, rgba(4, 36, 68, 0.03) 0%, rgba(250, 126, 35, 0.02) 100%);
             z-index: -1;
             pointer-events: none;
         }
@@ -61,7 +61,7 @@
         }
         
         header.scrolled {
-            box-shadow: 0 5px 20px rgba(10, 42, 71, 0.15);
+            box-shadow: 0 5px 20px rgba(4, 36, 68, 0.15);
             padding: 5px 0;
         }
         
@@ -163,26 +163,26 @@
         .btn-primary {
             background: var(--go);
             color: white;
-            box-shadow: 0 5px 15px rgba(0, 155, 110, 0.3);
+            box-shadow: 0 5px 15px rgba(250, 126, 35, 0.3);
         }
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 155, 110, 0.4);
+            box-shadow: 0 10px 25px rgba(250, 126, 35, 0.4);
         }
         
         .btn-secondary {
             background: white;
             color: var(--fusion);
             border: 2px solid var(--fusion);
-            box-shadow: 0 5px 15px rgba(10, 42, 71, 0.1);
+            box-shadow: 0 5px 15px rgba(4, 36, 68, 0.1);
         }
         
         .btn-secondary:hover {
             background: var(--fusion);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(10, 42, 71, 0.2);
+            box-shadow: 0 10px 25px rgba(4, 36, 68, 0.2);
         }
         
         .mobile-menu {
@@ -194,7 +194,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(10, 42, 71, 0.9) 0%, rgba(0, 51, 102, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(4, 36, 68, 0.9) 0%, rgba(2, 20, 40, 0.9) 100%);
             background-size: cover;
             background-position: center;
             color: white;
@@ -311,7 +311,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             box-shadow: 
-                0 8px 32px rgba(10, 42, 71, 0.15),
+                0 8px 32px rgba(4, 36, 68, 0.15),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
@@ -325,7 +325,7 @@
         .feature-card:hover {
             transform: translateY(-15px);
             box-shadow: 
-                0 15px 40px rgba(10, 42, 71, 0.25),
+                0 15px 40px rgba(4, 36, 68, 0.25),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.2);
             background: linear-gradient(
                 135deg, 
@@ -339,7 +339,7 @@
             width: 80px;
             height: 80px;
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 20px rgba(10, 42, 71, 0.1);
+            box-shadow: 0 4px 20px rgba(4, 36, 68, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
@@ -355,11 +355,11 @@
             transform: translateY(-15px);
             background: linear-gradient(
                 135deg, 
-                rgba(0, 155, 110, 0.25) 0%, 
-                rgba(10, 42, 71, 0.25) 100%
+                rgba(250, 126, 35, 0.25) 0%, 
+                rgba(4, 36, 68, 0.25) 100%
             );
             box-shadow: 
-                0 12px 40px rgba(0, 155, 110, 0.3),
+                0 12px 40px rgba(250, 126, 35, 0.3),
                 0 0 15px rgba(0, 201, 255, 0.2),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
@@ -380,7 +380,7 @@
         
         /* Stats Section */
         .stats {
-            background: linear-gradient(135deg, var(--fusion) 0%, #05203a 100%);
+            background: linear-gradient(135deg, var(--fusion) 0%, #021428 100%);
             color: white;
             padding: 100px 0;
             position: relative;
@@ -429,7 +429,7 @@
         
         /* CTA Section */
         .cta {
-            background: linear-gradient(135deg, var(--fusion) 0%, #003366 100%);
+            background: linear-gradient(135deg, var(--fusion) 0%, #021428 100%);
             color: white;
             text-align: center;
             padding: 100px 0;
@@ -473,7 +473,7 @@
         
         /* Footer - Fixed for Mobile */
         footer {
-            background: linear-gradient(135deg, #0a2a47 0%, #05203a 100%);
+            background: linear-gradient(135deg, var(--fusion) 0%, #021428 100%);
             color: white;
             padding: 100px 0 40px;
             position: relative;
@@ -637,7 +637,7 @@
         }
 
         .mobile-nav ul li a:hover {
-            background: rgba(10, 42, 71, 0.05);
+            background: rgba(4, 36, 68, 0.05);
             color: var(--go);
         }
 
